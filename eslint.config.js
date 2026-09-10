@@ -30,6 +30,23 @@ export default [
     },
   },
 
+  // Keep TypeScript formatting consistent across data and UI code.
+  {
+    files: ["**/*.ts"],
+    rules: {
+      quotes: ["error", "single", { avoidEscape: true }],
+      semi: ["error", "always"],
+    },
+  },
+
+  // Public data-layer APIs must declare their boundary types.
+  {
+    files: ["db/**/*.ts", "src/lib/**/*.ts"],
+    rules: {
+      "@typescript-eslint/explicit-module-boundary-types": "error",
+    },
+  },
+
   // Astro files
   ...eslintPluginAstro.configs.recommended,
 
